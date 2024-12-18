@@ -1,5 +1,5 @@
 <script setup>
-import ProductViewer from '@/modules/product-management/product-viewer/components/product-viewer.vue'
+import ProductViewer from '@/modules/product-management/product-viewer/components/ProductViewer.vue'
 import UserChart from "@/modules/product-management/user-chart/components/UserChart.vue";
 import ProductStore from "@/modules/product-management/product-store/components/ProductStore.vue";
 
