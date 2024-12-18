@@ -3,7 +3,7 @@ import ProductViewer from '@/modules/product-management/product-viewer/component
 import UserChart from "@/modules/product-management/user-chart/components/UserChart.vue";
 import ProductStore from "@/modules/product-management/product-store/components/ProductStore.vue";
 
-import {ref} from "vue";
+import {provide, ref} from "vue";
 
 const selectedUserProducts = ref([]);
 const selectedStoreProducts = ref('');
@@ -16,18 +16,20 @@ const showStoreProduct = (product) => {
   selectedStoreProducts.value = product;
 }
 
+provide('selectedStoreProducts', selectedStoreProducts)
+
 
 </script>
 
 <template>
   <div class="store">
-    <product-viewer :selectedStoreProducts="selectedStoreProducts" :selectedUserProducts="selectedUserProducts"/>
+    <product-viewer :selectedUserProducts="selectedUserProducts"/>
     <div class="store__items">
       <div class="store__item">
         <user-chart :addUserProduct="addUserProduct" :selectedUserProducts="selectedUserProducts"/>
       </div>
       <div class="store__item">
-        <product-store :showStoreProduct="showStoreProduct"/>
+        <product-store/>
       </div>
     </div>
   </div>

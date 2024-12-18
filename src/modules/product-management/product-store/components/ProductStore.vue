@@ -1,10 +1,11 @@
 <script setup>
-const props = defineProps({
-  showStoreProduct: Function,
-});
 
-const addStoreProduct = (product) => {
-  props.showStoreProduct(product);
+import {useProductStore} from "@/modules/product-management/product-store/store/productStore";
+
+const productStore = useProductStore();
+
+const selectStoreProduct = (product) => {
+  productStore.updateShowProduct(product);
 }
 
 const storeItems = [
@@ -47,7 +48,7 @@ const storeItems = [
 
   <div class="store-container">
     <div v-for="storeItem in storeItems" :key="storeItem.id" class="store-container__item"
-         @click="addStoreProduct(storeItem.name)"> {{ storeItem.name }}
+         @click="selectStoreProduct(storeItem)"> {{ storeItem.name }}
     </div>
   </div>
 

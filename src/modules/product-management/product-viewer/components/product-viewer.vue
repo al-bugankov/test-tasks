@@ -1,11 +1,12 @@
 <script setup>
 import {defineProps} from 'vue';
+import {useProductStore} from "@/modules/product-management/product-store/store/productStore";
 
 const props = defineProps({
   selectedUserProducts: Array,
-  selectedStoreProducts: String,
 });
 
+const productStore = useProductStore();
 
 </script>
 
@@ -27,10 +28,10 @@ const props = defineProps({
     </div>
     <div class="store-product-viewer">
       <div
-        v-if="selectedStoreProducts.length > 0"
+        v-if="productStore.currentProduct.name"
         class="store-product-viewer__item"
       >
-        {{ selectedStoreProducts }}
+        {{ productStore.currentProduct.name }}
       </div>
     </div>
   </div>
